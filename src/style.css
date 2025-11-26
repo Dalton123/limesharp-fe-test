@@ -1,0 +1,168 @@
+@import "tailwindcss";
+
+@source "../index.html";
+@source "./**/*.{vue,js,ts,jsx,tsx}";
+
+/* Font Face Declarations */
+
+/* Cormorant - Serif font for headings */
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-LightItalic.ttf") format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-Italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-MediumItalic.ttf") format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-SemiBoldItalic.ttf") format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant";
+  src: url("/fonts/cormorant/Cormorant-BoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Inter - Variable font for body text */
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter/Inter-Italic-VariableFont_opsz,wght.ttf")
+    format("truetype-variations");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Tailwind Theme Extension */
+@theme {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-serif: "Cormorant", Georgia, serif;
+  --breakpoint-xl: 75rem;
+}
+
+/* Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* View Transitions API Configuration */
+/* Enables smooth morphing between card and detail views */
+/* Apply object-fit to pseudo-elements for proper image handling */
+@supports (view-transition-name: none) {
+  /* Configure pseudo-elements to handle object-cover images */
+  ::view-transition-old(project-image),
+  ::view-transition-new(project-image) {
+    /* Disable default crossfade animation */
+    animation: none;
+    /* Disable default blend mode that causes visible overlap */
+    mix-blend-mode: normal;
+
+    /* Fill the morphing container completely */
+    width: 100%;
+    height: 100%;
+
+    /* Apply object-fit to pseudo-elements (they render as replaced content) */
+    object-fit: cover;
+    object-position: center;
+
+    /* Clip overflow */
+    overflow: clip;
+  }
+
+  /* Apply timing to GROUP for geometric morph (position/size/transform) */
+  ::view-transition-group(project-image) {
+    animation-duration: 800ms;
+    animation-timing-function: cubic-bezier(0, 0.2, 0.2, 1);
+    overflow: clip;
+  }
+}

@@ -1,0 +1,33 @@
+export const ANIMATION_DURATIONS = {
+  /** Card FLIP animation (move and scale) - Figma: 800ms */
+  CARD_FLIP: 800,
+  TOTAL_OPEN: 1800,
+  TOTAL_CLOSE: 1000,
+  CARD_FADE: 300,
+  CARD_HOVER: 1000,
+  DETAIL_CONTENT_DURATION: 500,
+  DETAIL_HEADING_DELAY: 900,
+  DETAIL_DESCRIPTION_DELAY: 1100,
+  DETAIL_LINK_DELAY: 1300,
+  INTRO_LOGO: 500,
+  INTRO_CONTENT: 300,
+  INTRO_STAGGER: 200,
+  DETAIL_EXIT_FADE: 200,
+  CLOSE_LOGO_DELAY: 0,
+  CLOSE_SUBTITLE_DELAY: 200,
+  CTA_UNDERLINE: 400,
+} as const;
+
+export const ANIMATION_EASINGS = {
+  FLIP: "cubic-bezier(0, 0.2, 0.2, 1)",
+  LINEAR: "linear",
+  EASE_OUT: "ease-out",
+  CTA_CURVE: "cubic-bezier(0.5, 0, 0.5, 1)",
+} as const;
+
+export const Z_INDEX = {
+  GRID: 10,
+  OVERLAY: 30,
+  ANIMATING_CARD: 40,
+  DETAIL: 50,
+} as const;
